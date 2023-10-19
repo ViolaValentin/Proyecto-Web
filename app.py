@@ -9,12 +9,19 @@ productos= [
     {"Nombre":"paracetamol", "Stock": 500}
 ]
 
+
+
 @app.route("/")
+def login():
+    return render_template("login.html")
+
+@app.route("/home")
 def home():
     return render_template("home.html")
 
-if __name__=="__main__":
-    app.run(debug=True, port=4000)
+@app.route("/create-account")
+def createaccount():
+    return render_template("create-account.html")
 
 @app.route('/productos', methods=["GET"])
 def productosGet ():
@@ -42,3 +49,6 @@ def eliminarProducto(producto):
         if p ["Nombre"] == producto:
             return jsonify({"producto":p, "busqueda":producto, "status": "ok"})
     return jsonify({"busqueda":producto, "status":"ok"})
+
+if __name__=="__main__":
+    app.run(debug=True, port=4000)

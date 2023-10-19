@@ -11,19 +11,62 @@
         <div><img class="circulo-logo" src="../static/img/Diseño sin título (42)sca.png" alt=""></div>
     </div>
     <div class="cuadrante2">
-        <div class="conteneor-form">    
-            <form action="">
-                            <img class="profile-img" src="../static/img/Diseño_sin_título__43_-removebg-preview.png" alt="">                            
-                            <p class="p-sign-in">Sign in</p>
-                            <p class="p-create-account">or <a href="">Create account</a></p>
-                            <input class="campos" type="text" name="" id="" placeholder="Usuario" required>
-                            <input class="campos" type="password" name="" id="" placholder="Contraseña" required>
-                            <input class="campos-check" type="checkbox" name="" id="">Remember me
-                            <input class="boton" type="submit" value="Login">
+        <div class="conteneor-form" id="log_in">    
+            <form v-on:submit="ComprobarUsuario">
+                    <img class="profile-img" src="../static/img/Diseño_sin_título__43_-removebg-preview.png" alt="">                            
+                    <p class="p-sign-in">Sign in</p>
+                    <p class="p-create-account">or <a href="/create-account">Create account</a></p>
+                            
+                    <input class="campos" type="text" v-model="UsuarioIngresado.usuario" placeholder="Usuario" required>
+                    <input class="campos" type="password" v-model="UsuarioIngresado.contraseña" placeholder="Contraseña" required>
+                    <input class="boton" type="submit" value="Iniciar sesion">
             </form>
         </div>
     </div>
-
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+        let log_in = Vue.createApp({
+            data: function(){
+                return {
+                    nameApp: 'Log in',
+                    UsuarioIngresado: {
+                        usuario: "",
+                        contraseña: "",
+                    },
+                    usuarios: [
+                        {
+                            NombreUsuario: 'JeronimoCasanova',
+                            contraseña: "jc",
+                        },
+                        {
+                            NombreUsuario: 'ValentinViola',
+                            contraseña: "vv",
+                        },
+                        {
+                            NombreUsuario: 'SantinoCremona',
+                            contraseña: "sc",
+                        },
+                        {
+                            NombreUsuario: 'FrancoPuricelli',
+                            contraseña: "fp",
+                        }
+                    ]
+                }
+            },
+            methods: { 
+                ComprobarUsuario: function(e){
+                    e.preventDefault();
+                    if (this.usuarios.find(usuario => usuario.NombreUsuario == this.UsuarioIngresado.usuario && usuario.contraseña == this.UsuarioIngresado.contraseña)){
+                        window.location.href = "/home";
+                    }
+                    else { 
+                        alert('Nombre de usuario o contraseña incorrectos');
+                    }
+                }
+            }
+        });
+        log_in.mount('#log_in')
+    </script>
 </body>
 
 
