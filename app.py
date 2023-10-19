@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request, render_template
 
 app = Flask (__name__)
 
@@ -9,15 +9,36 @@ productos= [
     {"Nombre":"paracetamol", "Stock": 500}
 ]
 
+@app.route("/")
+def home():
+    return render_template("home.html")
+
+if __name__=="__main__":
+    app.run(debug=True, port=4000)
+
 @app.route('/productos', methods=["GET"])
 def productosGet ():
     return jsonify ({"productos":productos, "status":"Ok"})
 
 @app.route("/productos/<producto>", methods=["GET"]) 
 def productoGet (producto):
-    if p["Nombre"]==producto:
-        return jsonify({"producto":productos[0], "busqueda":producto, "status":"ok"})
+    for p in productos:
+        if p["Nombre"]==producto:
+            return jsonify({"producto":productos[0], "busqueda":producto, "status":"ok"})
     return jsonify({"busqueda":producto, "status":"not found"})
 
-if __name__=="__main__":
-    app.run(debug=True, port=4000)
+@app.route("/productos", methods=["POST"])
+def productopost ():
+    body = request.json
+    nombre = body["Nombre"]
+    stock = body["Stock"]
+    productoAlta = {nombre: "Nombre", stock:"Stock"}
+    productos.append(productoAlta)
+    return jsonify({productoAlta:"producto", "status":"ok"})
+
+@app.route("/productos/<producto>", methods = ["DELETE"])
+def eliminarProducto(producto):
+    for p in productos:
+        if p ["Nombre"] == producto:
+            return jsonify({"producto":p, "busqueda":producto, "status": "ok"})
+    return jsonify({"busqueda":producto, "status":"ok"})

@@ -17,6 +17,11 @@
     flex-wrap: wrap;
   }
 
+.menues:hover{
+    text-decoration: underline;
+    color: white;
+}
+
 
   .contenedor-categorias{
     display: flex;  
