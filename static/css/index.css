@@ -169,7 +169,7 @@ h1{
 
 .section-ranking{
     margin-top: 10vh;
-    background-image: url("../static/img/vds.png");
+    background-image: url({{ url_for('static', filename='img/home.jpg') }})
     display: flex;
     justify-content: center;    
 }

@@ -1,23 +1,26 @@
-from flask import Flask, jsonify
+from flask import Flask, render_template
+from markupsafe import escape
 
-app = Flask (__name__)
+app=Flask(__name__)
+@app.get ("/")
+def index():
+    return render_template ("index.html")
 
-productos= [
-    {"Nombre":"tensiometro", "Stock": 5},
-    {"Nombre":"termometro", "Stock": 50},
-    {"Nombre":"ibuprofeno", "Stock": 5500},
-    {"Nombre":"paracetamol", "Stock": 500}
-]
+@app.get ("/login")
+def login():
+    return render_template ("login.html")
 
-@app.route('/productos', methods=["GET"])
-def productosGet ():
-    return jsonify ({"productos":productos, "status":"Ok"})
+@app.get ("/create-account")
+def createAccount():
+    return render_template ("create-account.html")
 
-@app.route("/productos/<producto>", methods=["GET"]) 
-def productoGet (producto):
-    if p["Nombre"]==producto:
-        return jsonify({"producto":productos[0], "busqueda":producto, "status":"ok"})
-    return jsonify({"busqueda":producto, "status":"not found"})
+@app.get ("/descuento-individual")
+def descuentoIndividual():
+    return render_template ("descuento-individual.html")
+
+@app.get ("/descuento-diario")
+def descuentoDiario():
+    return render_template ("descuento-diario.html")
 
 if __name__=="__main__":
-    app.run(debug=True, port=4000)
+    app.run(debug=True, port=5000)
