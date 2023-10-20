@@ -12,18 +12,17 @@
     </div>
     <div class="cuadrante2">
         <div class="conteneor-form">    
-            <form action="">
-                            <img class="profile-img" src="../static/img/Diseño_sin_título__43_-removebg-preview.png" alt="">                            
-                            <p class="p-sign-in">Sign in</p>
-                            <p class="p-create-account">or <a href="">Create account</a></p>
-                            <input class="campos" type="text" name="" id="" placeholder="Usuario" required>
-                            <input class="campos" type="password" name="" id="" placholder="Contraseña" required>
-                            <input class="campos-check" type="checkbox" name="" id="">Remember me
-                            <input class="boton" type="submit" value="Login">
+            <form action="/login" method="post">
+                <img class="profile-img" src="../static/img/Diseño_sin_título__43_-removebg-preview.png" alt="">                            
+                <p class="p-sign-in">Sign in</p>
+                <p class="p-create-account">or <a href="/registers">Create account</a></p>
+                            
+                <input class="campos" type="text" name="username" placeholder="Nombre de usuario" required>
+                <input class="campos" type="password" name="password" placeholder="Contraseña" required>
+                <input class="boton" type="submit" value="Iniciar sesion">
             </form>
         </div>
     </div>
-
 </body>
 
 
