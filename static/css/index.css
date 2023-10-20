@@ -167,12 +167,12 @@ h1{
     padding: 1vh;
 }
 
-.section-ranking{
+.section-ranking {
     margin-top: 10vh;
-    background-image: url({{ url_for('static', filename='img/home.jpg') }})
     display: flex;
-    justify-content: center;    
+    justify-content: center;
 }
+
 .cuadro-ranking{
     width: 75%;
     padding: 4vh;
@@ -232,4 +232,11 @@ table{
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.imagen-fondo-ranking{
+    position: absolute;
+    z-index: -1;
+    height: 60vh;
+    width: 100%;
 }
