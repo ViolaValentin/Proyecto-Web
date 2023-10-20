@@ -9,19 +9,55 @@ productos= [
     {"Nombre":"paracetamol", "Stock": 500}
 ]
 
+usuarios = [
+    {
+        "NombreUsuario": 'JeronimoCasanova',
+        "contraseña": "jc",
+    },
+    {
+        "NombreUsuario": 'ValentinViola',
+        "contraseña": "vv",
+    },
+    {
+        "NombreUsuario": 'SantinoCremona',
+        "contraseña": "sc",
+    },
+    {
+        "NombreUsuario": 'FrancoPuricelli',
+        "contraseña": "fp",
+    }
+]
+
 
 
 @app.route("/")
-def login():
+def home():
     return render_template("login.html")
 
-@app.route("/home")
-def home():
-    return render_template("home.html")
+@app.route('/login', methods=['POST'])
+def login():
+    username = request.form['username']
+    password = request.form['password']
 
-@app.route("/create-account")
-def createaccount():
+    if any(user["NombreUsuario"] == username and user["contraseña"] == password for user in usuarios):
+        return render_template('home.html')
+    else:
+        return "Credenciales incorrectas. Intenta de nuevo."
+
+@app.route("/registers")
+def crearUsuario():
     return render_template("create-account.html")
+
+@app.route('/register', methods=['POST'])
+def register():
+    new_username = request.form['new_username']
+    new_password = request.form['new_password']
+
+    if not any(user["NombreUsuario"] == new_username for user in usuarios):
+        usuarios.append({"NombreUsuario": new_username, "contraseña": new_password})
+        return render_template('login.html')
+    else:
+        return "El nombre de usuario ya existe. Elige otro."
 
 @app.route('/productos', methods=["GET"])
 def productosGet ():
