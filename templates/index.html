@@ -13,10 +13,9 @@
     <section class="menu"> 
         <img src="../static/img/Diseño sin título (41).png" alt="" class="logo">
         <div class="contenedor-menues">
-            <a class="menues" href="home.html">Inicio</a>
-            <a class="menues" href="servicios.html">Categorías</a>
-            <a class="menues" href="descuento-diario.html">Descuento diario</a>
-            <a class="menues" href="contacto.html">Contacto</a>
+            <a class="menues" href="{{ url_for('index') }}">Inicio</a>
+            <a class="menues" href="{{ url_for('categorias') }}">Categorías</a>
+            <a class="menues" href="{{ url_for('descuentoDiario') }}">Descuento diario</a>         
         </div> 
         <div class="search-bar">
             <table class="search-bar-elements-container">

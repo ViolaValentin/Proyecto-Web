@@ -1,14 +1,13 @@
-window.onload = init;
-function init (){
-    var planet = document.getElementById ("greenplanet")
-    planet.innerHTML="Red Alert: hit by..."
-var botonTxto = document.getElementById("botonCambiarTexto")
-botonTxto.addEventListener("click", modificarRePlanet)
+class List extends HTMLElement {
+    constructor(){
+        super();
+
+        let shadow = this.attachShadow({mode:"open"})
+        this.divHeader = document.createElement ("div")
+        this.divHeader.innerHTML= "Hola";
+
+        shadow.appendChild (this.divHeader)
+    }
 }
 
-function modificarRePlanet(){
-    var planet = document.getElementById ("greenplanet")
-    planet.innerHTML="Red Alert: hit by..."
-}
-
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+customElements.define ("menu",List);

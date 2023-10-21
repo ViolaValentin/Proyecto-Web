@@ -24,4 +24,8 @@ def descuentoIndividual():
 def descuentoDiario():
     return render_template ("descuento-diario.html")
 
+@app.get ("/categorias")
+def categorias():
+    return render_template ("categorias.html")
+
 app.run(debug=True, port=5000)

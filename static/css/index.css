@@ -242,6 +242,6 @@ table{
 .imagen-fondo-ranking{
     position: absolute;
     z-index: -1;
-    height: 60vh;
+    height: 70vh;
     width: 100%;
 }
