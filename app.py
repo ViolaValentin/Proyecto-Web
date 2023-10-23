@@ -6,9 +6,9 @@ app=Flask(__name__)
 
 descuentos=[
     {"idDescuento":1,"imagen":"https://th.bing.com/th/id/R.7aa2ed0bc6e8caec4559150bdded9f1d?rik=qgPckyM1RzxCFA&riu=http%3a%2f%2fturronessirvent.com%2fwp-content%2fuploads%2f2016%2f01%2fhelados.jpg&ehk=Gl%2bXdl1SP9UiQ1bcL9smnn6GHgKijfbC%2fYFyc4vrCFs%3d&risl=&pid=ImgRaw&r=0","nombre":"Grido helados"},
-    {"idDescuento":1,"imagen":"https://th.bing.com/th/id/R.7aa2ed0bc6e8caec4559150bdded9f1d?rik=qgPckyM1RzxCFA&riu=http%3a%2f%2fturronessirvent.com%2fwp-content%2fuploads%2f2016%2f01%2fhelados.jpg&ehk=Gl%2bXdl1SP9UiQ1bcL9smnn6GHgKijfbC%2fYFyc4vrCFs%3d&risl=&pid=ImgRaw&r=0","nombre":"Grido helados"},
-    {"idDescuento":1,"imagen":"https://th.bing.com/th/id/R.7aa2ed0bc6e8caec4559150bdded9f1d?rik=qgPckyM1RzxCFA&riu=http%3a%2f%2fturronessirvent.com%2fwp-content%2fuploads%2f2016%2f01%2fhelados.jpg&ehk=Gl%2bXdl1SP9UiQ1bcL9smnn6GHgKijfbC%2fYFyc4vrCFs%3d&risl=&pid=ImgRaw&r=0","nombre":"Grido helados"},
-    {"idDescuento":1,"imagen":"https://th.bing.com/th/id/R.7aa2ed0bc6e8caec4559150bdded9f1d?rik=qgPckyM1RzxCFA&riu=http%3a%2f%2fturronessirvent.com%2fwp-content%2fuploads%2f2016%2f01%2fhelados.jpg&ehk=Gl%2bXdl1SP9UiQ1bcL9smnn6GHgKijfbC%2fYFyc4vrCFs%3d&risl=&pid=ImgRaw&r=0","nombre":"Grido helados"}
+    {"idDescuento":2,"imagen":"https://th.bing.com/th/id/R.7aa2ed0bc6e8caec4559150bdded9f1d?rik=qgPckyM1RzxCFA&riu=http%3a%2f%2fturronessirvent.com%2fwp-content%2fuploads%2f2016%2f01%2fhelados.jpg&ehk=Gl%2bXdl1SP9UiQ1bcL9smnn6GHgKijfbC%2fYFyc4vrCFs%3d&risl=&pid=ImgRaw&r=0","nombre":"Grido helados"},
+    {"idDescuento":3,"imagen":"https://th.bing.com/th/id/R.7aa2ed0bc6e8caec4559150bdded9f1d?rik=qgPckyM1RzxCFA&riu=http%3a%2f%2fturronessirvent.com%2fwp-content%2fuploads%2f2016%2f01%2fhelados.jpg&ehk=Gl%2bXdl1SP9UiQ1bcL9smnn6GHgKijfbC%2fYFyc4vrCFs%3d&risl=&pid=ImgRaw&r=0","nombre":"Grido helados"},
+    {"idDescuento":4,"imagen":"https://th.bing.com/th/id/R.7aa2ed0bc6e8caec4559150bdded9f1d?rik=qgPckyM1RzxCFA&riu=http%3a%2f%2fturronessirvent.com%2fwp-content%2fuploads%2f2016%2f01%2fhelados.jpg&ehk=Gl%2bXdl1SP9UiQ1bcL9smnn6GHgKijfbC%2fYFyc4vrCFs%3d&risl=&pid=ImgRaw&r=0","nombre":"Grido helados"}
 ]
 
 from descuentos import descuentos
@@ -79,10 +79,50 @@ def descuentoDiario():
 def categorias():
     return render_template ("categorias.html")
 
-@app.route('/api/descuentos', methods=['GET'])
+@app.route('/descuentos', methods=['GET'])
 def get_descuentos():
     return (descuentos)
 
+@app.route('/descuentos/<int:id_descuento>', methods=['GET'])
+def getDescuento(id_descuento):
+    descuento_found = next((descuento for descuento in descuentos if descuento['idDescuento'] == id_descuento), None)
+    if descuento_found:
+        return jsonify({'descuento': descuento_found})
+    return jsonify({'message': 'Descuento no encontrado'})
+
+
+@app.route('/descuentos', methods=['POST'])
+def addDescuentos():
+    nuevo_descuento = {
+        'idDescuento': request.json['idDescuento'],
+        'imagen': request.json['imagen'],
+        'nombre': request.json['nombre']
+    }
+    descuentos.append(nuevo_descuento)
+    return jsonify({'descuentos': descuentos})
+
+@app.route('/descuentos/<int:id_descuento>', methods=['PUT'])
+def editDescuento(id_descuento):
+    descuentosFound = [descuento for descuento in descuentos if descuento['idDescuento'] == id_descuento]
+    if (len(descuentosFound) > 0):
+        descuentosFound[0]['idDescuento'] = request.json['idDescuento']
+        descuentosFound[0]['imagen'] = request.json['imagen']
+        descuentosFound[0]['nombre'] = request.json['nombre']
+        return jsonify({
+            'message': 'Descuento Actualizado',
+            'product': descuentosFound[0]
+        })
+    return jsonify({'message': 'Descuento no encontrado'})
+
+@app.route('/descuentos/<int:id_descuento>', methods=['DELETE'])
+def deleteDescuento(id_descuento):
+    descuentosFound = [descuento for descuento in descuentos if descuento['idDescuento'] == id_descuento]
+    if len(descuentosFound) > 0:
+        descuentos.remove(descuentosFound[0])
+        return jsonify({
+            'message': 'Descuento Eliminado',
+            'descuentos': descuentos
+        })
 
 
 app.run(debug=True, port=5000)
