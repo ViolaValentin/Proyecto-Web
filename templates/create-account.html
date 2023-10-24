@@ -11,8 +11,9 @@
         <div><img class="circulo-logo" src="../static/img/Diseño sin título (42)sca.png" alt=""></div>
     </div>
     <div class="cuadrante2" id="log_in">    
-        <form action="/register" method="post">
-            <img class="profile-img" src="../static/img/Diseño_sin_título__43_-removebg-preview.png" alt="">                            <p class="p-sign-in">I have an account</p>
+        <form action="/create-account" method="post">
+            <img class="profile-img" src="../static/img/Diseño_sin_título__43_-removebg-preview.png" alt="">
+            <p class="p-sign-in">I have an account</p>
             <p class="p-create-account"><a href="{{ url_for('login') }}">Sign up</a></p>
                            
             <div class="contenedor-campos-nombre">
@@ -27,6 +28,7 @@
             </div>
         </form>
     </div>
+
 
 </body>
 </html>

@@ -1,21 +1,11 @@
 
-from flask import Flask, render_template,jsonify,request
+from flask import Flask, render_template,jsonify,request, url_for, redirect
 from markupsafe import escape
 
 app=Flask(__name__)
 
-descuentos=[
-    {"idDescuento":1,"imagen":"https://th.bing.com/th/id/R.7aa2ed0bc6e8caec4559150bdded9f1d?rik=qgPckyM1RzxCFA&riu=http%3a%2f%2fturronessirvent.com%2fwp-content%2fuploads%2f2016%2f01%2fhelados.jpg&ehk=Gl%2bXdl1SP9UiQ1bcL9smnn6GHgKijfbC%2fYFyc4vrCFs%3d&risl=&pid=ImgRaw&r=0","nombre":"Grido helados"},
-    {"idDescuento":2,"imagen":"https://th.bing.com/th/id/R.7aa2ed0bc6e8caec4559150bdded9f1d?rik=qgPckyM1RzxCFA&riu=http%3a%2f%2fturronessirvent.com%2fwp-content%2fuploads%2f2016%2f01%2fhelados.jpg&ehk=Gl%2bXdl1SP9UiQ1bcL9smnn6GHgKijfbC%2fYFyc4vrCFs%3d&risl=&pid=ImgRaw&r=0","nombre":"Grido helados"},
-    {"idDescuento":3,"imagen":"https://th.bing.com/th/id/R.7aa2ed0bc6e8caec4559150bdded9f1d?rik=qgPckyM1RzxCFA&riu=http%3a%2f%2fturronessirvent.com%2fwp-content%2fuploads%2f2016%2f01%2fhelados.jpg&ehk=Gl%2bXdl1SP9UiQ1bcL9smnn6GHgKijfbC%2fYFyc4vrCFs%3d&risl=&pid=ImgRaw&r=0","nombre":"Grido helados"},
-    {"idDescuento":4,"imagen":"https://th.bing.com/th/id/R.7aa2ed0bc6e8caec4559150bdded9f1d?rik=qgPckyM1RzxCFA&riu=http%3a%2f%2fturronessirvent.com%2fwp-content%2fuploads%2f2016%2f01%2fhelados.jpg&ehk=Gl%2bXdl1SP9UiQ1bcL9smnn6GHgKijfbC%2fYFyc4vrCFs%3d&risl=&pid=ImgRaw&r=0","nombre":"Grido helados"}
-]
 
 from descuentos import descuentos
-
-@app.get ("/")
-def index():
-    return render_template ("index.html")
 
 usuarios = [
     {
@@ -42,34 +32,39 @@ usuarios = [
 def home():
     return render_template("login.html")
 
+@app.get ("/descuentos")
+def index():
+    return render_template ("index.html", descuentos=descuentos)
+
 @app.route('/login', methods=['POST'])
 def login():
     username = request.form['username']
     password = request.form['password']
 
     if any(user["NombreUsuario"] == username and user["contraseña"] == password for user in usuarios):
-        return render_template('index.html')
+        return redirect("/descuentos")
     else:
-        return "Credenciales incorrectas. Intenta de nuevo."
+        return "Nombre de usuario o contraseña incorrectos."
 
 @app.route("/create-account")
 def createAccount():
     return render_template("create-account.html")
 
-@app.route('/register', methods=['POST'])
+@app.route('/create-account', methods=['POST'])
 def register():
     new_username = request.form['new_username']
     new_password = request.form['new_password']
 
     if not any(user["NombreUsuario"] == new_username for user in usuarios):
         usuarios.append({"NombreUsuario": new_username, "contraseña": new_password})
-        return render_template('index.html')
+        return redirect("/descuentos")
     else:
         return "El nombre de usuario ya existe. Elige otro."
 
-@app.get ("/descuento-individual")
-def descuentoIndividual():
-    return render_template ("descuento-individual.html")
+
+# @app.get ("/descuento-individual")
+# def descuentoIndividual():
+#     return render_template ("descuento-individual.html")
 
 @app.get ("/descuento-diario")
 def descuentoDiario():
@@ -79,16 +74,23 @@ def descuentoDiario():
 def categorias():
     return render_template ("categorias.html")
 
-@app.route('/descuentos', methods=['GET'])
-def get_descuentos():
-    return (descuentos)
+# @app.route('/descuentos', methods=['GET'])
+# def get_descuentos():
+#     return (descuentos)
 
-@app.route('/descuentos/<int:id_descuento>', methods=['GET'])
-def getDescuento(id_descuento):
-    descuento_found = next((descuento for descuento in descuentos if descuento['idDescuento'] == id_descuento), None)
-    if descuento_found:
-        return jsonify({'descuento': descuento_found})
-    return jsonify({'message': 'Descuento no encontrado'})
+@app.route("/descuentos/<int:id>", methods=['GET'])
+def descuentoIndividual(id):
+    for descuento in descuentos:
+        if descuento["idDescuento"] == id:
+            return render_template("descuento_individual.html", descuento=descuento)
+    return jsonify({"mensaje": "Descuento no encontrado"}), 404
+
+# @app.route('/descuentos/<int:id_descuento>', methods=['GET'])
+# def getDescuento(id_descuento):
+#     descuento_found = next((descuento for descuento in descuentos if descuento['idDescuento'] == id_descuento), None)
+#     if descuento_found:
+#         return jsonify({'descuento': descuento_found})
+#     return jsonify({'message': 'Descuento no encontrado'})
 
 
 @app.route('/descuentos', methods=['POST'])
@@ -96,7 +98,9 @@ def addDescuentos():
     nuevo_descuento = {
         'idDescuento': request.json['idDescuento'],
         'imagen': request.json['imagen'],
-        'nombre': request.json['nombre']
+        'nombre': request.json['nombre'],
+        'Descuento': request.json['Descuento'],
+        'categoria': request.json['categoria']
     }
     descuentos.append(nuevo_descuento)
     return jsonify({'descuentos': descuentos})
@@ -108,6 +112,8 @@ def editDescuento(id_descuento):
         descuentosFound[0]['idDescuento'] = request.json['idDescuento']
         descuentosFound[0]['imagen'] = request.json['imagen']
         descuentosFound[0]['nombre'] = request.json['nombre']
+        descuentosFound[0]['Descuento'] = request.json['Descuento']
+        descuentosFound[0]['categoria'] = request.json['categoria']
         return jsonify({
             'message': 'Descuento Actualizado',
             'product': descuentosFound[0]
