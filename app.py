@@ -82,7 +82,7 @@ def categorias():
 def descuentoIndividual(id):
     for descuento in descuentos:
         if descuento["idDescuento"] == id:
-            return render_template("descuento_individual.html", descuento=descuento)
+            return render_template("descuento-individual.html", descuento=descuento)
     return jsonify({"mensaje": "Descuento no encontrado"}), 404
 
 # @app.route('/descuentos/<int:id_descuento>', methods=['GET'])
