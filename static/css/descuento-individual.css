@@ -79,13 +79,31 @@
     border-radius: 30px;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
 }
-#boton-descuento-individual{
+#boton-descuento-individual2{
     background: linear-gradient(to bottom right, #4b0082, #800080);
     border-radius: 30px;
     margin-top: 2vh;
+    margin-left: 10px;
     font-size: 2vh;
     padding: 2vh;
     color: white;
+    border: none;
+}
+#boton-descuento-individual2:hover{
+    background: linear-gradient(to bottom right, #4c008282, #800080);
+    border-radius: 30px;
+    margin-top: 2vh;
+    margin-left: 10px;
+    font-size: 2vh;
+    padding: 2vh;
+    color: white;
+    border: none;
+}
+#boton-precio-individual1{
+    margin-top: 2vh;
+    font-size: 2.5vh;
+    padding: 2vh;
+    color: rgb(0, 0, 0);
     border: none;
 }
 .contenedor-info-descuento-individual{
