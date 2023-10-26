@@ -23,6 +23,10 @@ usuarios = [
     {
         "NombreUsuario": 'FrancoPuricelli',
         "contraseña": "fp",
+    },
+    {
+        "NombreUsuario": 'MatiasBrun',
+        "contraseña": "mrb",
     }
 ]
 

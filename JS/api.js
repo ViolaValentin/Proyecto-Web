@@ -1,12 +1,18 @@
-import fetch from "fetch";
-const url = "https://dolarapi.com/v1/dolares/blue";
-const response = await fetch(url);
-const body = await response.json();
-const venta = body["venta"];
-console.log(venta);
+document.addEventListener("DOMContentLoaded", function () {
+    let dolarElement = document.getElementById("boton-descuento-individual1");
+    let resultadoElement = document.getElementById("resultado");
 
-var precioCupon = 0.3 * venta;
-
-let button = document.getElementById("boton-descuento-individual1");
-
-button.innerHTML = precio
+    let precioEnPesos = parseFloat(dolarElement.textContent.replace("$", ""));
+    
+    fetch("https://dolarapi.com/v1/dolares/blue")
+        .then(response => response.json())
+        .then(data => {
+            let precioDolarBlue = data.venta;
+            let resultado = 0.3 * precioDolarBlue;
+            resultadoElement.textContent = `$${resultado.toFixed(2)}`;
+        })
+        .catch(error => {
+            console.error("Error al obtener el precio del dólar:", error);
+            resultadoElement.textContent = "Error al obtener el precio del dólar";
+        });
+});
