@@ -6,12 +6,6 @@ app=Flask(__name__)
 
 
 from descuentos import descuentos
-
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 72ab2f8bf94f18f9a645177f6562358c87c5c4ec
 usuarios = [
     {
         "NombreUsuario": 'JeronimoCasanova',
@@ -41,9 +35,6 @@ usuarios = [
 def home():
     return render_template("login.html")
 
-@app.get ("/descuentos")
-def index():
-    return render_template ("index.html", descuentos=descuentos)
 
 @app.route('/login', methods=['POST'])
 def login():
@@ -69,12 +60,6 @@ def register():
         return redirect("/descuentos")
     else:
         return "El nombre de usuario ya existe. Elige otro."
-
-
-# @app.get ("/descuento-individual")
-# def descuentoIndividual():
-#     return render_template ("descuento-individual.html")
-
 @app.get ("/descuento-diario")
 def descuentoDiario():
     return render_template ("descuento-diario.html")
@@ -83,76 +68,22 @@ def descuentoDiario():
 def categorias():
     return render_template ("categorias.html")
 
-<<<<<<< HEAD
-@app.get('/')
-def index():
-    return render_template('index.html', descuentos=descuentos)
-
-@app.route('/')
-def table():
-    data = [
-        {'id': 1, 'nombre': 'Ejemplo 1', 'edad': 25},
-        {'id': 2, 'nombre': 'Ejemplo 2', 'edad': 30},
-        {'id': 3, 'nombre': 'Ejemplo 3', 'edad': 28},
-    ]
-    return render_template('index.html', data=data)
-=======
-# @app.route('/descuentos', methods=['GET'])
-# def get_descuentos():
-#     return (descuentos)
-
-@app.route("/descuentos/<int:id>", methods=['GET'])
+@app.route("/descuentos/<int:id>", methods=['GET'], endpoint='descuentoIndividual')
 def descuentoIndividual(id):
     for descuento in descuentos:
         if descuento["idDescuento"] == id:
             return render_template("descuento-individual.html", descuento=descuento)
-    return jsonify({"mensaje": "Descuento no encontrado"}), 404
+    return jsonify({"mensaje": "Descuento no encontrado"}, 404)
 
-# @app.route('/descuentos/<int:id_descuento>', methods=['GET'])
-# def getDescuento(id_descuento):
-#     descuento_found = next((descuento for descuento in descuentos if descuento['idDescuento'] == id_descuento), None)
-#     if descuento_found:
-#         return jsonify({'descuento': descuento_found})
-#     return jsonify({'message': 'Descuento no encontrado'})
+# Ruta que redirige a la ruta 'descuentoIndividual' con el valor 'id' especificado
+@app.route("/mostrar_descuento/<int:id>", methods=['GET'])
+def mostrar_descuento(id):
+    # Utiliza url_for para generar la URL con el valor 'id'
+    url = url_for('descuentoIndividual', id=id)
+    return f'<a href="{url}">Mostrar Descuento</a>'
 
-
-@app.route('/descuentos', methods=['POST'])
-def addDescuentos():
-    nuevo_descuento = {
-        'idDescuento': request.json['idDescuento'],
-        'imagen': request.json['imagen'],
-        'nombre': request.json['nombre'],
-        'Descuento': request.json['Descuento'],
-        'categoria': request.json['categoria']
-    }
-    descuentos.append(nuevo_descuento)
-    return jsonify({'descuentos': descuentos})
-
-@app.route('/descuentos/<int:id_descuento>', methods=['PUT'])
-def editDescuento(id_descuento):
-    descuentosFound = [descuento for descuento in descuentos if descuento['idDescuento'] == id_descuento]
-    if (len(descuentosFound) > 0):
-        descuentosFound[0]['idDescuento'] = request.json['idDescuento']
-        descuentosFound[0]['imagen'] = request.json['imagen']
-        descuentosFound[0]['nombre'] = request.json['nombre']
-        descuentosFound[0]['Descuento'] = request.json['Descuento']
-        descuentosFound[0]['categoria'] = request.json['categoria']
-        return jsonify({
-            'message': 'Descuento Actualizado',
-            'product': descuentosFound[0]
-        })
-    return jsonify({'message': 'Descuento no encontrado'})
-
-@app.route('/descuentos/<int:id_descuento>', methods=['DELETE'])
-def deleteDescuento(id_descuento):
-    descuentosFound = [descuento for descuento in descuentos if descuento['idDescuento'] == id_descuento]
-    if len(descuentosFound) > 0:
-        descuentos.remove(descuentosFound[0])
-        return jsonify({
-            'message': 'Descuento Eliminado',
-            'descuentos': descuentos
-        })
->>>>>>> 72ab2f8bf94f18f9a645177f6562358c87c5c4ec
-
+@app.get('/')
+def index():
+    return render_template('index.html', descuentos=descuentos)
 
 app.run(debug=True, port=5000)
