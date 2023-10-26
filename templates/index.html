@@ -55,36 +55,15 @@
     </section>
     <section class="section-carrusel-descuentos">
         <div class="contenedor-carrusel-descuentos">
+            {% for descuento in descuentos %}
             <div class="descuento">
-                <img class="img-descuento" src="https://th.bing.com/th/id/R.7aa2ed0bc6e8caec4559150bdded9f1d?rik=qgPckyM1RzxCFA&riu=http%3a%2f%2fturronessirvent.com%2fwp-content%2fuploads%2f2016%2f01%2fhelados.jpg&ehk=Gl%2bXdl1SP9UiQ1bcL9smnn6GHgKijfbC%2fYFyc4vrCFs%3d&risl=&pid=ImgRaw&r=0" alt="">
-                <p>Aca va el texto</p>
-                <a href="{{ url_for('descuentoIndividual') }}"><button class="boton-descuento">Descuento</button></a>
+                <img class="img-descuento" src="{{ descuento['imagen'] }}">
+                <p>{{ descuento['nombre'] }}</p>
+                <a href="{{ url_for('descuentoIndividual', id=descuento['idDescuento']) }}">
+                    <button class="boton-descuento">Descuento</button>
+                </a>
             </div>
-            <div class="descuento">
-                <img class="img-descuento" src="https://th.bing.com/th/id/R.7aa2ed0bc6e8caec4559150bdded9f1d?rik=qgPckyM1RzxCFA&riu=http%3a%2f%2fturronessirvent.com%2fwp-content%2fuploads%2f2016%2f01%2fhelados.jpg&ehk=Gl%2bXdl1SP9UiQ1bcL9smnn6GHgKijfbC%2fYFyc4vrCFs%3d&risl=&pid=ImgRaw&r=0" alt="">
-                <p>Aca va el texto</p>
-                <a href="../templates/descuento_individual.html"><button class="boton-descuento">Descuento</button></a>
-            </div>
-            <div class="descuento">
-                <img class="img-descuento" src="https://th.bing.com/th/id/R.7aa2ed0bc6e8caec4559150bdded9f1d?rik=qgPckyM1RzxCFA&riu=http%3a%2f%2fturronessirvent.com%2fwp-content%2fuploads%2f2016%2f01%2fhelados.jpg&ehk=Gl%2bXdl1SP9UiQ1bcL9smnn6GHgKijfbC%2fYFyc4vrCFs%3d&risl=&pid=ImgRaw&r=0" alt="">
-                <p>Aca va el texto</p>
-                <a href="../templates/descuento_individual.html"><button class="boton-descuento">Descuento</button></a>
-            </div>
-            <div class="descuento">
-                <img class="img-descuento" src="https://th.bing.com/th/id/R.7aa2ed0bc6e8caec4559150bdded9f1d?rik=qgPckyM1RzxCFA&riu=http%3a%2f%2fturronessirvent.com%2fwp-content%2fuploads%2f2016%2f01%2fhelados.jpg&ehk=Gl%2bXdl1SP9UiQ1bcL9smnn6GHgKijfbC%2fYFyc4vrCFs%3d&risl=&pid=ImgRaw&r=0" alt="">
-                <p>Aca va el texto</p>
-                <a href="../templates/descuento_individual.html"><button class="boton-descuento">Descuento</button></a>
-            </div>
-            <div class="descuento">
-                <img class="img-descuento" src="https://th.bing.com/th/id/R.7aa2ed0bc6e8caec4559150bdded9f1d?rik=qgPckyM1RzxCFA&riu=http%3a%2f%2fturronessirvent.com%2fwp-content%2fuploads%2f2016%2f01%2fhelados.jpg&ehk=Gl%2bXdl1SP9UiQ1bcL9smnn6GHgKijfbC%2fYFyc4vrCFs%3d&risl=&pid=ImgRaw&r=0" alt="">
-                <p>Aca va el texto</p>
-                <a href="../templates/descuento_individual.html"><button class="boton-descuento">Descuento</button></a>
-            </div>
-            <div class="descuento">
-                <img class="img-descuento" src="https://th.bing.com/th/id/R.7aa2ed0bc6e8caec4559150bdded9f1d?rik=qgPckyM1RzxCFA&riu=http%3a%2f%2fturronessirvent.com%2fwp-content%2fuploads%2f2016%2f01%2fhelados.jpg&ehk=Gl%2bXdl1SP9UiQ1bcL9smnn6GHgKijfbC%2fYFyc4vrCFs%3d&risl=&pid=ImgRaw&r=0" alt="">
-                <p>Aca va el texto</p>
-                <a href="../templates/descuento_individual.html"><button class="boton-descuento">Descuento</button></a>
-            </div>
+            {% endfor %}
         </div>
     </section>
     <section class="section-ranking">
@@ -126,5 +105,6 @@
             </div>
         </div>
     </section>
+    <div id="app">
 </body>
 </html>
