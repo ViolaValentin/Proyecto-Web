@@ -13,9 +13,7 @@ descuentos=[
 
 from descuentos import descuentos
 
-@app.get ("/")
-def index():
-    return render_template ("index.html")
+
 
 usuarios = [
     {
@@ -38,7 +36,7 @@ usuarios = [
 
 
 
-@app.route("/")
+@app.route("/login")
 def home():
     return render_template("login.html")
 
@@ -79,10 +77,18 @@ def descuentoDiario():
 def categorias():
     return render_template ("categorias.html")
 
-@app.route('/api/descuentos', methods=['GET'])
-def get_descuentos():
-    return (descuentos)
+@app.get('/')
+def index():
+    return render_template('index.html', descuentos=descuentos)
 
+@app.route('/')
+def table():
+    data = [
+        {'id': 1, 'nombre': 'Ejemplo 1', 'edad': 25},
+        {'id': 2, 'nombre': 'Ejemplo 2', 'edad': 30},
+        {'id': 3, 'nombre': 'Ejemplo 3', 'edad': 28},
+    ]
+    return render_template('index.html', data=data)
 
 
 app.run(debug=True, port=5000)
