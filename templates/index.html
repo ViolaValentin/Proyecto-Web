@@ -118,6 +118,17 @@
               <button class="btn-next">  
             </div>
           </div>
+        <div class="contenedor-carrusel-descuentos">
+            {% for descuento in descuentos %}
+            <div class="descuento">
+                <img class="img-descuento" src="{{ descuento['imagen'] }}">
+                <p>{{ descuento['nombre'] }}</p>
+                <a href="{{ url_for('descuentoIndividual', id=descuento['idDescuento']) }}">
+                    <button class="boton-descuento">Descuento</button>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
     </section>
     <section class="section-ranking">
         <img class="imagen-fondo-ranking" src="../static/img/vds.png" alt="">

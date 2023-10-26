@@ -34,11 +34,39 @@
     </section>
     <section>
         <div class="contenedor-descuento-individual">
-            <img class="img-descuento-individual" src="https://th.bing.com/th/id/R.7aa2ed0bc6e8caec4559150bdded9f1d?rik=qgPckyM1RzxCFA&riu=http%3a%2f%2fturronessirvent.com%2fwp-content%2fuploads%2f2016%2f01%2fhelados.jpg&ehk=Gl%2bXdl1SP9UiQ1bcL9smnn6GHgKijfbC%2fYFyc4vrCFs%3d&risl=&pid=ImgRaw&r=0" alt="">
+            <img class="img-descuento-individual" src="{{ descuento['imagen'] }}" alt="">
             <div class="contenedor-texto-descuento-individual"> 
+
                 <h1>Grido Helados: 30% off</h1>
                 <p>Este cupón de descuento es válido hasta el día 10/10/2023</p>
+                <div id="boton-descuento-individual1"></div>
+                <script>
+                    document.addEventListener("DOMContentLoaded", function () {
+    let dolarElement = document.getElementById("boton-descuento-individual1");
+    let resultadoElement = document.getElementById("resultado");
+
+    let precioEnPesos = parseFloat(dolarElement.textContent.replace("$", ""));
+    
+    fetch("https://dolarapi.com/v1/dolares/blue")
+        .then(response => response.json())
+        .then(data => {
+            let precioDolarBlue = data.venta;
+            let resultado = 0.3 * precioDolarBlue;
+            resultadoElement.textContent = `$${resultado.toFixed(2)}`;
+        })
+        .catch(error => {
+            console.error("Error al obtener el precio del dólar:", error);
+            resultadoElement.textContent = "Error al obtener el precio del dólar";
+        });
+});
+                </script>
+                <div id="resultado"></div>
+                <button id="boton-descuento-individual2">Comprar</button>
+
+                <h1>"{{ descuento['nombre'] }}"</h1>
+                <p>"{{ descuento['Descuento'] }}"</p>
                 <button id="boton-descuento-individual">Usar cupon</button>
+
             </div>    
             <div>
                 <div class="contenedor-info-descuento-individual">
@@ -100,3 +128,6 @@
                 </div>
         </section>
     </section>
+    
+</body>
+</html>
