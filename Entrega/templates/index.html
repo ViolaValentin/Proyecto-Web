@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@100;800&family=Kanit:wght@500&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    <section class="menu"> 
+        <img src="../static/img/Diseño sin título (41).png" alt="" class="logo">
+        <div class="contenedor-menues">
+            <a class="menues" href="{{ url_for('index') }}">Inicio</a>
+            <a class="menues" href="{{ url_for('categorias') }}">Categorías</a>
+            <a class="menues" href="{{ url_for('descuentoDiario') }}">Descuento diario</a>         
+        </div> 
+        <div class="search-bar">
+            <table class="search-bar-elements-container">
+                <tr>
+                    <td class="td-input-bar">
+                        <input type="text" placeholder="Search..." class="search" id="inputSearch">
+                    </td>
+                    <td>
+                        <a href="#"><img src="../static/img/baseline_search_black_24dp.png" alt="" class="search-icon-img"></a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </section>
+    <h1>Descubrí nuestros descuentos</h1>
+    <section class="contenedor-categorias">
+        <div class="contenedor-cajas">
+            <div><img src="https://www.cocinacaserayfacil.net/wp-content/uploads/2020/03/Platos-de-comida-que-pides-a-domicilio-y-puedes-hacer-en-casa-945x630.jpg" alt="" class="caja-categorias"><p class="p-categorias">#Comidas</p></div>
+            <div><img src="https://concepto.de/wp-content/uploads/2014/08/tecnologia-e1551386720574-800x412.jpg" alt="" class="caja-categorias"><p class="p-categorias">#Tecnología</p></div>
+            <div><img src="https://buenosaires.gob.ar/sites/default/files/styles/card_img_top/public/media/image/2020/11/20/7f211443570b111e8ebdc0bf97d42faf9e9c64e0.jpeg?itok=Nm8xEII6" alt="" class="caja-categorias"><p class="p-categorias">#Deportes</p></div>
+            <div><img src="https://media.a24.com/p/89c392d0fcc296e390891e4c8d27beeb/adjuntos/296/imagenes/009/113/0009113226/1200x675/smart/pexels-photo-7991158jpeg.jpeg" alt="" class="caja-categorias"><p class="p-categorias">#Multimedia</p></div>
+            <div><img src="https://media-cdn.tripadvisor.com/media/photo-s/16/1a/ea/54/hotel-presidente-4s.jpg" alt="" class="caja-categorias"><p class="p-categorias">#Hotelería</p></div>
+            <div><img src="https://www.bbvaseguros.com.ar/wp-content/uploads/2021/09/img-mascotas.png" alt="" class="caja-categorias"><p class="p-categorias">#Mascotas</p></div>
+            <div><img src="https://concepto.de/wp-content/uploads/2020/03/musica-e1584123209397.jpg" alt="" class="caja-categorias"><p class="p-categorias">#Música</p></div>
+        </div>     
+    </section>
+    <section class="section-contenedor-imagenes-section-carrusel">
+        <div class="contenedor-imagenes-section-carrusel">
+            <div>
+                <img class="img1-section-carrusel" src="https://images.ecestaticos.com/j8exM3G00FKxNOsdok9_oL99m8Q=/0x0:2119x1415/1200x900/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2F21c%2F586%2F696%2F21c5866968158e56bf258a48a5e3053b.jpg" alt="">
+            </div>
+            <div>
+                <img class="img2-section-carrusel" src="https://cdn.computerhoy.com/sites/navi.axelspringer.es/public/media/image/2018/04/295717-que-es-malo-abusar-comida-rapida.png?tf=3840x" alt="">
+                <img class="img2-section-carrusel" src="https://www.cronista.com/files/image/304/304168/5ffe2013310ef_950_534!.png?s=8214844c5d8adf78f204ef924b8456dc&d=1633113288" alt="">
+            </div>
+        </div>
+    </section>
+    <section class="section-carrusel-descuentos">
+        <div class="contenedor-carrusel-descuentos">
+            {% for descuento in descuentos %}
+            <div class="descuento">
+                <img class="img-descuento" src="{{ descuento['imagen'] }}">
+                <p>{{ descuento['nombre'] }}</p>
+                <a href="{{ url_for('descuentoIndividual', id=descuento['idDescuento']) }}">
+                    <button class="boton-descuento">Descuento</button>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    <section class="section-ranking">
+        <img class="imagen-fondo-ranking" src="../static/img/vds.png" alt="">
+        <div class="cuadro-ranking">
+            <div class="encabezado-cuadro-ranking">
+                Ranking
+            </div>
+            <div class="cuerpo-cuadro-ranking">
+                <table>
+                    <tbody>
+                        <tr class="tr-ranking tr-encabezado">
+                            <td>Usuario</td>
+                            <td>Monto ahorrado</td>
+                            <td>Beneficios aplicados</td>               
+                        </tr>
+                    <tr class="tr-ranking tr1">
+                        <td>Mati</td>
+                        <td>$30k</td>
+                        <td>10</td>
+                    </tr>
+                    <tr class="tr-ranking tr2">
+                        <td>Jero</td>
+                        <td>$30k</td>
+                        <td>10</td>
+                    </tr>
+                    <tr class="tr-ranking tr3">
+                        <td>Valen</td>
+                        <td>$30k</td>
+                        <td>10</td>
+                    </tr>
+                    <tr class="tr-ranking">
+                        <td>Fran</td>
+                        <td>$30k</td>
+                        <td>10</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+    <div id="app">
+</body>
+</html>
