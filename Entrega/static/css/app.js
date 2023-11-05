@@ -13,3 +13,10 @@ const app = new Vue({
         }
     }
 });
+
+var appVue2 = new Vue ({
+    el: '#app',
+    data:{
+        miHTML:'<h1>Hola</h1>'
+    }
+})

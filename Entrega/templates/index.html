@@ -7,9 +7,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@100;800&family=Kanit:wght@500&display=swap" rel="stylesheet">
+    <script src="{{url_for('static',filename='css/app.js')}}"></script>
     <title>Document</title>
 </head>
 <body>
+    <div id="app">
+        <div v-html="miHTML"></div>
+    </div>
     <section class="menu"> 
         <img src="../static/img/Diseño sin título (41).png" alt="" class="logo">
         <div class="contenedor-menues">

@@ -1,6 +1,7 @@
 *{
     font-family: 'Fira Sans', sans-serif;
     font-family: 'Kanit', sans-serif;
+    
 }
 @property --rotate {
     syntax: "<angle>";
@@ -23,6 +24,9 @@
     padding-top: 2rem;
     padding-bottom: 2rem;
     box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     
   }
   
@@ -106,4 +110,48 @@
     margin-top: 2rem;
   }
 
-  
+#image {
+  margin-top: 2vh;
+  max-width: 100%;
+  height: 20vh;
+  border-radius: 10px;
+
+}
+
+.hidden {
+  display: none;
+}
+
+#image.active {
+  display: block;
+  opacity: 1;
+}
+
+#nombre {
+  color: white;
+  font-size: 3vh;
+}
+#descuento{
+  color: white;
+  font-size: 2vh;
+}
+#image-container {
+    display: none;
+    margin-top: 2vh;
+    background: linear-gradient(to bottom right, #4b0082, #800080);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    padding: 10px;
+    text-align: center;
+}
+button{
+  border-radius: 30px;
+  background: white;
+  border: none;
+  font-size: 2vh;
+  color: black;
+  padding: 1vh;
+}
+#link{
+  display: none;
+}
