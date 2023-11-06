@@ -57,21 +57,21 @@
                     <img class="icon-descuento-individual" src="../static/img/marcador-de-posicion.png" alt="">
                     <div>
                         <h3>Ubicación</h3>
-                        <p class="p-info-descuento-individual">Argentina</p>
+                        <p class="p-info-descuento-individual">"{{ descuento['ubicacion'] }}"</p>
                     </div>    
                 </div>
                 <div class="contenedor-info-descuento-individual">
                     <img class="icon-descuento-individual" src="../static/img/calendario.png" alt="">
                     <div>
                         <h3>Usalo los días</h3>
-                        <p class="p-info-descuento-individual">Viernes</p>
+                        <p class="p-info-descuento-individual">"{{ descuento['disponibilidad'] }}"</p>
                     </div>  
                 </div>
                 <div class="contenedor-info-descuento-individual">
                     <img class="icon-descuento-individual" src="../static/img/cronografo.png" alt="">
                     <div>
                         <h3>Fecha de vencimiento</h3>
-                        <p class="p-info-descuento-individual">10/12</p>
+                        <p class="p-info-descuento-individual">"{{ descuento['vencimiento'] }}"</p>
                     </div>  
                 </div>
             </div>
