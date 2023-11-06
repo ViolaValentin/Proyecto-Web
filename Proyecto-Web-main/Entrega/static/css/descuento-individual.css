@@ -1,0 +1,176 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'Fira Sans', sans-serif;
+    font-family: 'Kanit', sans-serif;
+}
+.menu {
+    width: 100%;
+    height: 15vh;
+    background: linear-gradient(to bottom right, #4b0082, #800080);
+    border-bottom-left-radius: 6vh;
+    border-bottom-right-radius: 6vh;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  .contenedor-menues{
+    gap: 1vh;
+    display: flex;
+    justify-content: space-around;
+    margin-left: 1vh;
+    }  
+.logo{
+    width: 20vh;
+}
+.menues{
+    font-size: 3vh;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+
+}
+.search-bar{
+    
+    width: 40vh;
+    height: 4vh;
+    border-radius: 50px;
+    display: flex;
+
+}
+.search-bar-elements-container{
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+
+}
+.td-input-bar{
+    width: 100%;
+}
+
+.search{
+    border: none;
+    height: 100%;
+    width: 100%;
+    padding-right: 5vh;
+    border-radius: 50px;
+    font-size: 2vh;
+    font-weight: 600;
+    padding-left: 1vh;
+}
+.search-icon-img{
+    margin-top: 1vh;
+}
+.contenedor-descuento-individual{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    
+}
+.contenedor-texto-descuento-individual{
+    margin: 3vh;
+}
+.img-descuento-individual{
+    width: 25%;
+    margin: 3vh;
+    border-radius: 30px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
+.boton-descuento-individual2{
+    background: linear-gradient(to bottom right, #4b0082, #800080);
+    border-radius: 30px;
+    margin-top: 2vh;
+    margin-left: 10px;
+    font-size: 2vh;
+    padding: 2vh;
+    color: white;
+    border: none;
+}
+.boton-descuento-individual2:hover{
+    background: linear-gradient(to bottom right, #4c008282, #800080);
+    border-radius: 30px;
+    margin-top: 2vh;
+    margin-left: 10px;
+    font-size: 2vh;
+    padding: 2vh;
+    color: white;
+    border: none;
+}
+#codigo-qr-img{
+    height: 300px;
+    width: 300px;
+}
+
+#boton-precio-individual1{
+    margin-top: 2vh;
+    font-size: 2.5vh;
+    padding: 2vh;
+    color: rgb(0, 0, 0);
+    border: none;
+}
+
+#cerrar-modal{
+    background: linear-gradient(to bottom right, #4c008282, #800080);
+    border-radius: 30px;
+    margin-top: 10px;
+    margin-left: 110px;
+    font-size: 20px;
+    padding: 15px;
+    color: white;
+    border: none;
+}
+
+.contenedor-info-descuento-individual{
+    display: flex;
+    gap: 1vh;
+    margin: 3vh;
+}
+.icon-descuento-individual{
+    width: 5vh;
+}
+h3{
+    color: grey;
+    font-weight: bold;
+    font-size: 2vh;
+}
+.p-info-descuento-individual{
+    font-size: 1.5vh;
+    color: rgb(185, 181, 181);
+    font-weight: 500;
+}
+.section-carrusel-descuentos{
+    display: flex;
+    margin-top: 10vh;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+}
+.contenedor-carrusel-descuentos{
+    display: flex;
+    width: 80%;
+    flex-wrap: wrap;
+    margin-top: 2vh;
+}
+.descuento{
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px;
+}
+.img-descuento{
+    width: 23vh;
+    border-radius: 30px;
+}
+.boton-descuento{
+    border-radius: 30px;
+    background: linear-gradient(to bottom right, #4b0082, #800080);;
+    border: none;
+    color: white;
+    padding: 1vh;
+}

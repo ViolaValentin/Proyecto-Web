@@ -1,0 +1,22 @@
+{
+	"folders": [
+		{
+			"name": "Proyecto Web",
+			"path": "../../../../../Documents/Proyecto Web"
+		},
+		{
+			"name": "Proyecto-Web-72ab2f8bf94f18f9a645177f6562358c87c5c4ec",
+			"path": "../../../../Proyecto-Web-72ab2f8bf94f18f9a645177f6562358c87c5c4ec/Proyecto-Web-72ab2f8bf94f18f9a645177f6562358c87c5c4ec"
+		},
+		{
+			"name": "Unidad-05-FWK",
+			"path": "../../../../../programacion-web/Unidad-05-FWK"
+		},
+		{
+			"path": "../.."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Proyecto-Web-main"
+	}
+}
