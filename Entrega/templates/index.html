@@ -59,6 +59,7 @@
     </section>
     <section class="section-carrusel-descuentos">
         <div class="contenedor-carrusel-descuentos">
+            <div class="carrusel-descuentos">
             {% for descuento in descuentos %}
             <div class="descuento">
                 <img class="img-descuento" src="{{ descuento['imagen'] }}">
@@ -69,6 +70,7 @@
             </div>
             {% endfor %}
         </div>
+    </div>
     </section>
     <section class="section-ranking">
         <img class="imagen-fondo-ranking" src="../static/img/vds.png" alt="">
@@ -109,6 +111,22 @@
             </div>
         </div>
     </section>
-    <div id="app">
+    <script>
+        const carrusel = document.querySelector('.carrusel-descuentos');
+
+        function desplazarCarrusel() {
+            const primerDescuento = carrusel.firstElementChild;
+            carrusel.style.transition = "transform 1s ease-in-out";
+            carrusel.style.transform = `translateX(-${primerDescuento.offsetWidth}px)`;
+
+            setTimeout(function() {
+                carrusel.style.transition = "none";
+                carrusel.appendChild(primerDescuento);
+                carrusel.style.transform = "translateX(0)";
+            }, 1000);
+        }
+
+        setInterval(desplazarCarrusel, 3000);
+    </script>
 </body>
 </html>

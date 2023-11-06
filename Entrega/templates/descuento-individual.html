@@ -14,10 +14,9 @@
     <section class="menu"> 
         <img src="../static/img/Diseño sin título (41).png" alt="" class="logo">
         <div class="contenedor-menues">
-            <a class="menues" href="home.html">Inicio</a>
-            <a class="menues" href="servicios.html">Categorías</a>
-            <a class="menues" href="descuento-diario.html">Descuento diario</a>
-            <a class="menues" href="contacto.html">Contacto</a>
+            <a class="menues" href="{{ url_for('index') }}">Inicio</a>
+            <a class="menues" href="{{ url_for('categorias') }}">Categorías</a>
+            <a class="menues" href="{{ url_for('descuentoDiario') }}">Descuento diario</a>      
         </div> 
         <div class="search-bar">
             <table class="search-bar-elements-container">
@@ -37,8 +36,8 @@
             <img class="img-descuento-individual" src="{{ descuento['imagen'] }}" alt="">
             <div class="contenedor-texto-descuento-individual"> 
 
-                <h1>Grido Helados: 30% off</h1>
-                <p>Este cupón de descuento es válido hasta el día 10/10/2023</p>
+                <h1>"{{ descuento['nombre'] }}"</h1>
+                <p>"{{ descuento['Descuento'] }}"</p>
                 <div id="boton-descuento-individual1"></div>
 
                 <div id="resultado"></div>
@@ -46,10 +45,6 @@
                     <button id="boton-descuento-individual" class="boton-descuento-individual2">Usar cupon</button>
                 </div>
 
-                <h1>"{{ descuento['nombre'] }}"</h1>
-                <p>"{{ descuento['Descuento'] }}"</p>
-        
-        
             <div id="modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.8); z-index: 999;">
                 <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: #fff; padding: 40px; border-radius: 10px;">
                     <img id="codigo-qr-img" src="../static/img/qr.png" alt="Código QR" style="display: block;">
@@ -62,60 +57,26 @@
                     <img class="icon-descuento-individual" src="../static/img/marcador-de-posicion.png" alt="">
                     <div>
                         <h3>Ubicación</h3>
-                        <p class="p-info-descuento-individual">Argentina</p>
+                        <p class="p-info-descuento-individual">"{{ descuento['ubicacion'] }}"</p>
                     </div>    
                 </div>
                 <div class="contenedor-info-descuento-individual">
                     <img class="icon-descuento-individual" src="../static/img/calendario.png" alt="">
                     <div>
                         <h3>Usalo los días</h3>
-                        <p class="p-info-descuento-individual">Viernes</p>
+                        <p class="p-info-descuento-individual">"{{ descuento['disponibilidad'] }}"</p>
                     </div>  
                 </div>
                 <div class="contenedor-info-descuento-individual">
                     <img class="icon-descuento-individual" src="../static/img/cronografo.png" alt="">
                     <div>
                         <h3>Fecha de vencimiento</h3>
-                        <p class="p-info-descuento-individual">10/12</p>
+                        <p class="p-info-descuento-individual">"{{ descuento['vencimiento'] }}"</p>
                     </div>  
                 </div>
             </div>
         </div>
-        <section class="section-carrusel-descuentos">
-            <h2>Otros descuentos</h2>
-                <div class="contenedor-carrusel-descuentos">
-                    <div class="descuento">
-                        <img class="img-descuento" src="https://th.bing.com/th/id/R.7aa2ed0bc6e8caec4559150bdded9f1d?rik=qgPckyM1RzxCFA&riu=http%3a%2f%2fturronessirvent.com%2fwp-content%2fuploads%2f2016%2f01%2fhelados.jpg&ehk=Gl%2bXdl1SP9UiQ1bcL9smnn6GHgKijfbC%2fYFyc4vrCFs%3d&risl=&pid=ImgRaw&r=0" alt="">
-                        <p>Aca va el texto</p>
-                        <button class="boton-descuento">Descuento</button>
-                    </div>
-                    <div class="descuento">
-                        <img class="img-descuento" src="https://th.bing.com/th/id/R.7aa2ed0bc6e8caec4559150bdded9f1d?rik=qgPckyM1RzxCFA&riu=http%3a%2f%2fturronessirvent.com%2fwp-content%2fuploads%2f2016%2f01%2fhelados.jpg&ehk=Gl%2bXdl1SP9UiQ1bcL9smnn6GHgKijfbC%2fYFyc4vrCFs%3d&risl=&pid=ImgRaw&r=0" alt="">
-                        <p>Aca va el texto</p>
-                        <button class="boton-descuento">Descuento</button>
-                    </div>
-                    <div class="descuento">
-                        <img class="img-descuento" src="https://th.bing.com/th/id/R.7aa2ed0bc6e8caec4559150bdded9f1d?rik=qgPckyM1RzxCFA&riu=http%3a%2f%2fturronessirvent.com%2fwp-content%2fuploads%2f2016%2f01%2fhelados.jpg&ehk=Gl%2bXdl1SP9UiQ1bcL9smnn6GHgKijfbC%2fYFyc4vrCFs%3d&risl=&pid=ImgRaw&r=0" alt="">
-                        <p>Aca va el texto</p>
-                        <button class="boton-descuento">Descuento</button>
-                    </div>
-                    <div class="descuento">
-                        <img class="img-descuento" src="https://th.bing.com/th/id/R.7aa2ed0bc6e8caec4559150bdded9f1d?rik=qgPckyM1RzxCFA&riu=http%3a%2f%2fturronessirvent.com%2fwp-content%2fuploads%2f2016%2f01%2fhelados.jpg&ehk=Gl%2bXdl1SP9UiQ1bcL9smnn6GHgKijfbC%2fYFyc4vrCFs%3d&risl=&pid=ImgRaw&r=0" alt="">
-                        <p>Aca va el texto</p>
-                        <button class="boton-descuento">Descuento</button>
-                    </div>
-                    <div class="descuento">
-                        <img class="img-descuento" src="https://th.bing.com/th/id/R.7aa2ed0bc6e8caec4559150bdded9f1d?rik=qgPckyM1RzxCFA&riu=http%3a%2f%2fturronessirvent.com%2fwp-content%2fuploads%2f2016%2f01%2fhelados.jpg&ehk=Gl%2bXdl1SP9UiQ1bcL9smnn6GHgKijfbC%2fYFyc4vrCFs%3d&risl=&pid=ImgRaw&r=0" alt="">
-                        <p>Aca va el texto</p>
-                        <button class="boton-descuento">Descuento</button>
-                    </div>
-                    <div class="descuento">
-                        <img class="img-descuento" src="https://th.bing.com/th/id/R.7aa2ed0bc6e8caec4559150bdded9f1d?rik=qgPckyM1RzxCFA&riu=http%3a%2f%2fturronessirvent.com%2fwp-content%2fuploads%2f2016%2f01%2fhelados.jpg&ehk=Gl%2bXdl1SP9UiQ1bcL9smnn6GHgKijfbC%2fYFyc4vrCFs%3d&risl=&pid=ImgRaw&r=0" alt="">
-                        <p>Aca va el texto</p>
-                        <button class="boton-descuento">Descuento</button>
-                    </div>
-                </div>
-        </section>
+       
     </section>
     <script>
         function mostrarCodigoQR() {
