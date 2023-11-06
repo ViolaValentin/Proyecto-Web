@@ -140,26 +140,33 @@ h1{
     justify-content: center;
     align-items: center;
 }
+
 .section-carrusel-descuentos{
     display: flex;
     justify-content: space-around;
 }
-.contenedor-carrusel-descuentos{
-    display: flex;
+.contenedor-carrusel-descuentos {
+    overflow: hidden;
+    position: relative;
     width: 80%;
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: wrap;
 }
-.descuento{
+
+.carrusel-descuentos {
+    white-space: nowrap;
+    transition: transform 1s;
+    display: inline-block;
+}
+
+.descuento {
+    display: inline-block;
+    padding: 10px;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
     border-radius: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding: 10px;
+    margin: 15px;
+    text-align: center;
 }
+
+
 .img-descuento{
     width: 23vh;
     border-radius: 30px;

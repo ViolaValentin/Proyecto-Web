@@ -101,6 +101,8 @@ h1{
     color: white;
     font-size: 4vh;
     text-shadow: 2px 2px 2px #800080;
+    background: none;
+    border: none;
 }
 .caja-categorias{
     display: flex;
@@ -112,4 +114,31 @@ h1{
     border-radius: 30px;
     filter: blur(1px);
     background: rgba(0, 0, 0, 15);
+}
+
+.descuento{
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px;
+    margin-bottom: 25px;
+}
+.img-descuento{
+    width: 23vh;
+    border-radius: 30px;
+}
+
+.section-carrusel-descuentos{
+    display: flex;
+    justify-content: space-around;
+}
+.contenedor-carrusel-descuentos{
+    display: flex;
+    width: 80%;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
 }

@@ -1,5 +1,6 @@
 from flask import Flask, render_template,jsonify,request, url_for, redirect
 from markupsafe import escape
+import json
 
 app=Flask(__name__)
 
@@ -60,14 +61,9 @@ def register():
 
     if not any(user["NombreUsuario"] == new_username for user in usuarios):
         usuarios.append({"NombreUsuario": new_username, "contraseña": new_password})
-        return redirect("/descuentos")
+        return redirect("/")
     else:
         return "El nombre de usuario ya existe. Elige otro."
-
-
-# @app.get ("/descuento-individual")
-# def descuentoIndividual():
-#     return render_template ("descuento-individual.html")
 
 @app.get ("/descuento-diario")
 def descuentoDiario():
@@ -75,11 +71,8 @@ def descuentoDiario():
 
 @app.get ("/categorias")
 def categorias():
-    return render_template ("categorias.html")
-
-# @app.route('/descuentos', methods=['GET'])
-# def get_descuentos():
-#     return (descuentos)
+    descuentos_json = json.dumps(descuentos)
+    return render_template ("categorias.html",  descuentos_json=descuentos_json)
 
 @app.route("/descuentos/<int:id>", methods=['GET'])
 def descuentoIndividual(id):
@@ -87,14 +80,6 @@ def descuentoIndividual(id):
         if descuento["idDescuento"] == id:
             return render_template("descuento-individual.html", descuento=descuento)
     return jsonify({"mensaje": "Descuento no encontrado"}), 404
-
-# @app.route('/descuentos/<int:id_descuento>', methods=['GET'])
-# def getDescuento(id_descuento):
-#     descuento_found = next((descuento for descuento in descuentos if descuento['idDescuento'] == id_descuento), None)
-#     if descuento_found:
-#         return jsonify({'descuento': descuento_found})
-#     return jsonify({'message': 'Descuento no encontrado'})
-
 
 @app.route('/descuentos', methods=['POST'])
 def addDescuentos():
