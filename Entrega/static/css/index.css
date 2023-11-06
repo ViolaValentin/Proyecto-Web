@@ -148,7 +148,7 @@ h1{
 .contenedor-carrusel-descuentos {
     overflow: hidden;
     position: relative;
-    width: 80%;
+    width: 100%;
 }
 
 .carrusel-descuentos {
@@ -168,7 +168,8 @@ h1{
 
 
 .img-descuento{
-    width: 23vh;
+    width: 200px;
+    height: 120px;
     border-radius: 30px;
 }
 .boton-descuento{

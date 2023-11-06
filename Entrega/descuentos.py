@@ -8,7 +8,7 @@ descuentos = [
     {"idDescuento": 7, "imagen": "https://www.comeros.com.ar/wp-content/uploads/2021/11/jbl-logo-6-1.png", "nombre": "JBL", "Descuento": "Consigue un descuento del 12%", "categoria":"musica"},
     {"idDescuento": 8, "imagen": "https://brandemia.org/contenido/subidas/2022/10/marca-mcdonalds-logo.png", "nombre": "McDonalds", "Descuento": "Obten un 15% de descuento", "categoria":"comida"},
     {"idDescuento": 9, "imagen": "https://logowik.com/content/uploads/images/305_sony.jpg", "nombre": "SONY", "Descuento": "Con este codigo obten un 10% de decuento", "categoria":"tecnologia"},
-    {"idDescuento": 10, "imagen": "https://sportsfacilities.com.ar/v2/wp-content/uploads/2015/06/adidas-logo.jpg", "nombre": "ADIDAS", "Descuento": "Obten un 20% de descuento", "categoria":"deportes"},
+    {"idDescuento": 10, "imagen": "https://static.vecteezy.com/system/resources/previews/010/994/325/non_2x/adidas-logo-white-symbol-clothes-design-icon-abstract-football-illustration-with-black-background-free-vector.jpg", "nombre": "ADIDAS", "Descuento": "Obten un 20% de descuento", "categoria":"deportes"},
     {"idDescuento": 11, "imagen": "https://www.apple.com/v/apple-tv-plus/ag/images/meta/apple-tv__e7aqjl2rqzau_og.png", "nombre": "APPLE TV", "Descuento": "Compra ahora y ahorra un 5%", "categoria":"multimedia"},
     {"idDescuento": 12, "imagen": "https://seeklogo.com/images/B/booking-logo-937C69F36E-seeklogo.com.png", "nombre": "BOOKING", "Descuento": "Aprovecha el 10% de descuento", "categoria":"hoteleria"},
     {"idDescuento": 13, "imagen": "https://www.purina.com.ar/themes/custom/purina/dogchow/assets/images/logo/logo.png", "nombre": "DogChow", "Descuento": "Obten un descuento del 23%", "categoria":"mascotas"},
