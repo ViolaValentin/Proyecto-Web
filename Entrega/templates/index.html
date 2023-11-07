@@ -28,7 +28,8 @@
                         <input type="text" placeholder="Buscar..." class="search" id="inputSearch">
                     </td>
                     <td>
-                        <a href="#"><img src="../static/img/baseline_search_black_24dp.png" alt="" class="search-icon-img"></a>
+                        <a href="#" id="searchIcon"><img src="../static/img/baseline_search_black_24dp.png" alt="" class="search-icon-img"></a>
+
                     </td>
                 </tr>
             </table>
@@ -128,5 +129,46 @@
 
         setInterval(desplazarCarrusel, 3000);
     </script>
+
+    <script>
+        const palabrasClave = [
+            { nombre: "GRIDO HELADOS", url: "http://127.0.0.1:5000/descuentos/1"},
+            { nombre: "GARBARINO", url: "http://127.0.0.1:5000/descuentos/2"},
+            { nombre: "NIKE", url: "http://127.0.0.1:5000/descuentos/3"},
+            {nombre: "SONY", url:"http://127.0.0.1:5000/descuentos/9"},
+        ];
+    
+        function buscarPalabraClave(palabra) {
+            for (const keyword of palabrasClave) {
+                if (palabra.toLowerCase() === keyword.nombre.toLowerCase()) {
+                    window.location.href = keyword.url;
+                    return;
+                }
+            }
+            alert("No se han encontrado resultados para tu búsqueda");
+        }
+    
+        const inputSearch = document.getElementById("inputSearch");
+        const searchIcon = document.getElementById("searchIcon");
+    
+        searchIcon.addEventListener("click", function() {
+            const searchText = inputSearch.value.trim();
+    
+            if (searchText !== "") {
+                buscarPalabraClave(searchText);
+            }
+        });
+    
+        inputSearch.addEventListener("keydown", function(event) {
+            if (event.key === "Enter") {
+                const searchText = inputSearch.value.trim();
+    
+                if (searchText !== "") {
+                    buscarPalabraClave(searchText);
+                }
+            }
+        });
+    </script>
+    
 </body>
 </html>

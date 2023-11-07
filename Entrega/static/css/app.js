@@ -20,3 +20,4 @@ var appVue2 = new Vue ({
         miHTML:'<h1>Hola</h1>'
     }
 })
+
