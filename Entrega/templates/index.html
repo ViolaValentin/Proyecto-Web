@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@100;800&family=Kanit:wght@500&display=swap" rel="stylesheet">
     <script src="{{url_for('static',filename='css/app.js')}}"></script>
-    <title>Document</title>
+    <title>Home</title>
 </head>
 <body>
     <div id="app">
@@ -112,6 +112,7 @@
             </div>
         </div>
     </section>
+    
     <script>
         const carrusel = document.querySelector('.carrusel-descuentos');
 
@@ -129,7 +130,6 @@
 
         setInterval(desplazarCarrusel, 3000);
     </script>
-
     <script>
         const palabrasClave = [
             { nombre: "GRIDO HELADOS", url: "http://127.0.0.1:5000/descuentos/1"},
@@ -146,10 +146,8 @@
             { nombre: "BOOKING", url: "http://127.0.0.1:5000/descuentos/12"},
             { nombre: "DogChow", url: "http://127.0.0.1:5000/descuentos/13"},
             { nombre: "BOSE", url: "http://127.0.0.1:5000/descuentos/14"},
-
-
         ];
-    
+        
         function buscarPalabraClave(palabra) {
             for (const keyword of palabrasClave) {
                 if (palabra.toLowerCase() === keyword.nombre.toLowerCase()) {
@@ -159,22 +157,22 @@
             }
             alert("No se han encontrado resultados para tu búsqueda");
         }
-    
+        
         const inputSearch = document.getElementById("inputSearch");
         const searchIcon = document.getElementById("searchIcon");
-    
+        
         searchIcon.addEventListener("click", function() {
             const searchText = inputSearch.value.trim();
-    
+        
             if (searchText !== "") {
                 buscarPalabraClave(searchText);
             }
         });
-    
+        
         inputSearch.addEventListener("keydown", function(event) {
             if (event.key === "Enter") {
                 const searchText = inputSearch.value.trim();
-    
+        
                 if (searchText !== "") {
                     buscarPalabraClave(searchText);
                 }
