@@ -1,5 +1,6 @@
 function inicializarBusquedaPalabrasClave(){
     const palabrasClave = [
+        { nombre: "GRIDO", url: "http://127.0.0.1:5000/descuentos/1"},
         { nombre: "GRIDO HELADOS", url: "http://127.0.0.1:5000/descuentos/1"},
         { nombre: "GARBARINO", url: "http://127.0.0.1:5000/descuentos/2"},
         { nombre: "NIKE", url: "http://127.0.0.1:5000/descuentos/3"},
